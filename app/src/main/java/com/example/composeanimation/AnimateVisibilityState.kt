@@ -1,17 +1,19 @@
 package com.example.composeanimation
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
+import android.view.animation.BounceInterpolator
+import androidx.compose.animation.*
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -22,38 +24,31 @@ fun AnimateVisibilityState() {
             targetState = true
         }
     }
-    Column {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         AnimatedVisibility(
             visibleState = state,
-            enter = slideInVertically(
-                initialOffsetY = { fullHeight -> fullHeight },
-                animationSpec = tween(
-                    durationMillis = 3000,
-                    easing = LinearOutSlowInEasing
-                )
-            ),
-            exit = slideOutVertically(
-                targetOffsetY = { fullHeight -> fullHeight },
-                animationSpec = tween(
-                    durationMillis = 3000,
-                    easing = LinearOutSlowInEasing
-                )
-            )
+            enter = fadeIn(tween(1000)) + expandVertically (
+                animationSpec = tween(1500,
+                    easing = BounceInterpolator().toEasing())),
+            exit = fadeOut(tween(1000)) + shrinkVertically (
+                animationSpec = tween(1500,
+                    easing = BounceInterpolator().toEasing()))
         ) {
-            Text(text = "Hello, world!")
-        }
-        // Use the MutableTransitionState to know the current animation state
-        // of the AnimatedVisibility.
-        Text(
-            text = when {
-                state.isIdle && state.currentState -> "Visible"
+            // Use the MutableTransitionState to know the current animation state
+            // of the AnimatedVisibility.
+            Text(text = when {
+                state.isIdle && state.currentState -> "Hello, World!"
                 !state.isIdle && state.currentState -> "Disappearing"
-                state.isIdle && !state.currentState -> "Invisible"
+                state.isIdle && !state.currentState -> ""
                 else -> "Appearing"
-            }
-        )
+            })
+        }
         Button(onClick = { state.targetState = !state.targetState }) {
-            Text(if (state.targetState) "Hide" else "Show")
+            Text("Click Me")
         }
     }
 }
