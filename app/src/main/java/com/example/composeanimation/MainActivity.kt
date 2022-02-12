@@ -1,8 +1,6 @@
 package com.example.composeanimation
 
 import android.os.Bundle
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
@@ -18,7 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -48,7 +45,6 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String) {
     NavGraph()
 }
-
 
 object MainDestinations {
     const val MAIN_SCREEN = "mainScreen"
