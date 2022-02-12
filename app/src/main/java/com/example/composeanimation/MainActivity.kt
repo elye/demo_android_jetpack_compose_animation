@@ -55,6 +55,7 @@ object MainDestinations {
 enum class ANIMATION_TYPE(val value: String, val func: @Composable () -> Unit) {
     ANIMATE_VISIBILITY("Animate Visibility", { AnimateVisibility() }),
     ANIMATE_VISIBILITY_STATE("Animate Visibility State", { AnimateVisibilityState() }),
+    ANIMATE_VISIBILITY_NOT_GONE("Animate Visibility Not Gone", { AnimateVisibilityNotGone() }),
     CROSS_FADE("Cross Fade", { CrossFade() }),
     ANIMATE_CONTENT("Animate Content", { AnimatedContentSimple() }),
     ANIMATE_CONTENT_SIZE("Animate Content Size", { AnimateContentSize() }),
