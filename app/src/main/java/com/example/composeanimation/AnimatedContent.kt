@@ -38,9 +38,9 @@ fun AnimatedContentSimple() {
             AnimatedContent(targetState = currentPage,
                 transitionSpec = {
                     if (targetState > initialState) {
-                        slideIn()
+                        upColorTransition()
                     } else {
-                        slideOut()
+                        downColorTransition()
                     }.using(SizeTransform(clip = false))
                 }
             ) { screen ->
@@ -57,7 +57,7 @@ fun AnimatedContentSimple() {
 }
 
 @OptIn(ExperimentalAnimationApi::class)
-private fun slideOut() =
+private fun downColorTransition() =
     slideInHorizontally(
         initialOffsetX = { fullWidth -> -fullWidth },
         animationSpec = animationSpec()
@@ -69,7 +69,7 @@ private fun slideOut() =
     ) + fadeOut(animationSpec = animationSpec())
 
 @OptIn(ExperimentalAnimationApi::class)
-private fun slideIn() =
+private fun upColorTransition() =
     slideInHorizontally(
         initialOffsetX = { fullWidth -> fullWidth },
         animationSpec = animationSpec()
