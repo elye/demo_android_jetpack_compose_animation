@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
-fun <T>animationSpec() = tween<T>(
+fun <T> animationSpec() = tween<T>(
     durationMillis = 3000,
     easing = LinearOutSlowInEasing
 )
@@ -57,28 +57,28 @@ fun AnimatedContentSimple() {
 }
 
 @OptIn(ExperimentalAnimationApi::class)
-private fun slideOut() = slideInHorizontally(
-    initialOffsetX = { fullWidth -> -fullWidth },
-    animationSpec = animationSpec()
-) +
-        fadeIn(animationSpec = animationSpec()) with
-        slideOutVertically(
-            targetOffsetY = { fullHeight -> fullHeight },
-            animationSpec = animationSpec()
-        ) +
-        fadeOut(animationSpec = animationSpec())
+private fun slideOut() =
+    slideInHorizontally(
+        initialOffsetX = { fullWidth -> -fullWidth },
+        animationSpec = animationSpec()
+    ) + fadeIn(
+        animationSpec = animationSpec()
+    ) with slideOutVertically(
+        targetOffsetY = { fullHeight -> fullHeight },
+        animationSpec = animationSpec()
+    ) + fadeOut(animationSpec = animationSpec())
 
 @OptIn(ExperimentalAnimationApi::class)
-private fun slideIn() = slideInHorizontally(
-    initialOffsetX = { fullWidth -> fullWidth },
-    animationSpec = animationSpec()
-) +
-        fadeIn(animationSpec = animationSpec()) with
-        slideOutVertically(
-            targetOffsetY = { fullHeight -> -fullHeight },
-            animationSpec = animationSpec()
-        ) +
-        fadeOut(animationSpec = animationSpec())
+private fun slideIn() =
+    slideInHorizontally(
+        initialOffsetX = { fullWidth -> fullWidth },
+        animationSpec = animationSpec()
+    ) + fadeIn(
+        animationSpec = animationSpec()
+    ) with slideOutVertically(
+        targetOffsetY = { fullHeight -> -fullHeight },
+        animationSpec = animationSpec()
+    ) + fadeOut(animationSpec = animationSpec())
 
 @Composable
 fun ColorBoxOnly(screen: Int) {

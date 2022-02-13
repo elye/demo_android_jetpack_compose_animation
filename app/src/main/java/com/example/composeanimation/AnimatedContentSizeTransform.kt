@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.IntSize
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun AnimateContentSizeTransform() {
+fun AnimatedContentSizeTransform() {
 
     var expanded by remember {
         mutableStateOf(true)
