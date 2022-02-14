@@ -41,7 +41,7 @@ fun AnimateEnterExitChild() {
             )
             )
         ) {
-            val background by transition.animateColor { state ->
+            val background by transition.animateColor(label = "") { state ->
                 when(state) {
                     EnterExitState.PreEnter -> Color.Red
                     EnterExitState.PostExit -> Color.Green
