@@ -33,16 +33,16 @@ fun AnimatedContentSizeTransform() {
                         SizeTransform { initialSize, targetSize ->
                             if (targetState) {
                                 keyframes {
-                                    // Expand to target height first
-                                    IntSize(initialSize.width, targetSize.height) at time
-                                    // Then expand to target width
+                                    // Expand to target width first
+                                    IntSize(targetSize.width, initialSize.height) at time
+                                    // Then expand to target height
                                     durationMillis = time * 2
                                 }
                             } else {
                                 keyframes {
-                                    // Shrink to target width first
-                                    IntSize(targetSize.width, initialSize.height) at time
-                                    // Then shrink to target height
+                                    // Shrink to target height first
+                                    IntSize(initialSize.width, targetSize.height) at time
+                                    // Then shrink to target width
                                     durationMillis = time * 2
                                 }
                             }
