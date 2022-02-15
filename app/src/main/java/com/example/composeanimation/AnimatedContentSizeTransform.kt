@@ -18,9 +18,7 @@ import androidx.compose.ui.unit.IntSize
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AnimatedContentSizeTransform() {
-
     val time = 500
-
     Column {
         var expanded by remember {
             mutableStateOf(false)
