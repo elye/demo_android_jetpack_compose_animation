@@ -22,7 +22,12 @@ fun AnimatedContentSize() {
         }
 
         Image(
-            painter = painterResource(id = if (expanded) R.drawable.img else R.drawable.ic_launcher_background),
+            painter = painterResource(
+                id = if (expanded)
+                    R.drawable.img
+                else
+                    R.drawable.ic_launcher_background
+            ),
             contentDescription = "",
             modifier = Modifier
                 .background(Color.Yellow)
