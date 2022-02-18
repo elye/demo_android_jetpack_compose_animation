@@ -67,7 +67,8 @@ enum class ANIMATION_TYPE(val value: String, val func: @Composable () -> Unit) {
     UPDATE_TRANSITION_CHILD("Update Transition Child", { UpdateTransitionChild() }),
     UPDATE_TRANSITION_EXTENSION("Update Transition Extension", { UpdateTransitionExtension() }),
     POINTER_INPUT("Pointer Input", { PointerInput() }),
-    POINTER_SWIPE_TO_DISMISS("Pointer Swipe to Dismiss", { PointerSwipeToDismiss() })
+    POINTER_SWIPE_TO_DISMISS("Pointer Swipe to Dismiss", { PointerSwipeToDismiss() }),
+    COMBINATION("Combination", { Combination() })
 }
 
 @Composable
